@@ -1,0 +1,30 @@
+name: Update Plugins JSON
+
+on:
+  push:
+    paths:
+      - 'plugins/**.py'
+      - 'icons/**.png'
+      - 'generate_plugins_json.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Generate plugins.json
+        run: python generate_plugins_json.py
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add plugins.json
+          git commit -m "Auto-update plugins.json" || echo "No changes"
+          git push
