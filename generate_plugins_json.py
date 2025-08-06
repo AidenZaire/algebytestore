@@ -3,8 +3,8 @@ import os, json, re
 PLUGIN_DIR = "plugins"
 ICON_DIR = "icons"
 OUTPUT_FILE = "plugins.json"
+RELEASE_BASE_URL = "https://github.com/AidenZaire/algebytestore/releases/latest/download"
 
-# Pattern to match metadata lines
 metadata_pattern = re.compile(r'__plugin_(name|author|version|description)__\s*=\s*["\'](.+?)["\']')
 
 plugins_data = []
@@ -16,11 +16,11 @@ for filename in os.listdir(PLUGIN_DIR):
             content = f.read()
 
         meta_matches = dict(re.findall(metadata_pattern, content))
-        
+
         if all(k in meta_matches for k in ["name", "author", "version", "description"]):
             icon_file = filename.replace(".py", ".png")
-            icon_url = f"https://raw.githubusercontent.com/AidenZaire/algebytestore/main/{ICON_DIR}/{icon_file}"
-            download_url = f"https://raw.githubusercontent.com/AidenZaire/algebytestore/main/{PLUGIN_DIR}/{filename}"
+            icon_url = f"{RELEASE_BASE_URL}/{icon_file}"
+            download_url = f"{RELEASE_BASE_URL}/{filename}"
 
             plugins_data.append({
                 "name": meta_matches["name"],
@@ -31,9 +31,7 @@ for filename in os.listdir(PLUGIN_DIR):
                 "download_url": download_url
             })
 
-# Save plugins.json
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(plugins_data, f, indent=2)
 
 print(f"✅ Generated {OUTPUT_FILE} with {len(plugins_data)} plugins.")
-
