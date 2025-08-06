@@ -34,6 +34,14 @@ jobs:
           git commit -m "Auto-update plugins.json" || echo "No changes"
           git push
 
+      - name: Upload to Dropbox
+        run: |
+          curl -X POST https://content.dropboxapi.com/2/files/upload \
+            --header "Authorization: Bearer ${{ secrets.DROPBOX_TOKEN }}" \
+            --header "Dropbox-API-Arg: {\"path\": \"/plugins.json\", \"mode\": \"overwrite\"}" \
+            --header "Content-Type: application/octet-stream" \
+            --data-binary @plugins.json   
+
       - name: Create/Update Release
         uses: softprops/action-gh-release@v1
         with:
