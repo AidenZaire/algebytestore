@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "Function Analyzer",
+    "author": "Ayden",
+    "version": "2.0",
+    "description": "Analyze mathematical functions: differentiate, integrate, evaluate, and plot interactively.",
+    "icon_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/function_analyzer.png",
+    "download_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/function_analyzer.py"
+  }
+]
