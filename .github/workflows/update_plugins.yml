@@ -1,4 +1,4 @@
-name: Update Plugins JSON
+name: Update Plugins JSON and Release
 
 on:
   push:
@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Needed for pushing & releases
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -23,10 +26,24 @@ jobs:
       - name: Generate plugins.json
         run: python generate_plugins_json.py
 
-      - name: Commit changes
+      - name: Commit plugins.json
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add plugins.json
           git commit -m "Auto-update plugins.json" || echo "No changes"
           git push
+
+      - name: Create/Update Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: plugins-latest
+          name: Plugins Latest
+          body: "Automated build of latest plugin files."
+          draft: false
+          prerelease: false
+          files: |
+            plugins/*.py
+            icons/*.png
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
