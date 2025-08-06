@@ -1,5 +1,13 @@
 [
   {
+    "name": "Unit Converter Extension",
+    "author": "Ayden",
+    "version": "1.0",
+    "description": "Adds more categories and units to the Unit Converter.",
+    "icon_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/unit_converter_extension.png",
+    "download_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/unit_converter_extension.py"
+  },
+  {
     "name": "Function Analyzer",
     "author": "Ayden",
     "version": "2.0",
