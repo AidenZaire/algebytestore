@@ -36,3 +36,5 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(plugins_data, f, indent=2)
 
 print(f"✅ Generated {OUTPUT_FILE} with {len(plugins_data)} plugins.")
+
+Add plugin auto-update script
