@@ -8,6 +8,22 @@
     "download_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/unit_converter_extension.py"
   },
   {
+    "name": "Money Converter",
+    "author": "Ayden",
+    "version": "1.1",
+    "description": "Convert currencies with live or offline exchange rates.",
+    "icon_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/CurrencyConverter.png",
+    "download_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/CurrencyConverter.py"
+  },
+  {
+    "name": "Grapher",
+    "author": "Ayden",
+    "version": "1.0",
+    "description": "Draw graphs manually, plot functions, and integrate with Function Analyzer for advanced calculations.",
+    "icon_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/Grapher.png",
+    "download_url": "https://github.com/AidenZaire/algebytestore/releases/latest/download/Grapher.py"
+  },
+  {
     "name": "Function Analyzer",
     "author": "Ayden",
     "version": "2.0",
